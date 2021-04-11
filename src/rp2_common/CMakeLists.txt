@@ -27,6 +27,7 @@ pico_add_subdirectory(hardware_uart)
 pico_add_subdirectory(hardware_vreg)
 pico_add_subdirectory(hardware_watchdog)
 pico_add_subdirectory(hardware_xosc)
+pico_add_subdirectory(hardware_rosc)
 
 # Helper functions to connect to data/functions in the bootrom
 pico_add_subdirectory(pico_bootrom)

@@ -118,6 +118,18 @@ void gpio_set_irq_enabled(uint gpio, uint32_t events, bool enabled) {
     _gpio_set_irq_enabled(gpio, events, enabled, irq_ctrl_base);
 }
 
+bool gpio_enabled_dormant_irqs() {
+    // check if any dormant_irq is enabled
+    bool enabled = false;
+    io_irq_ctrl_hw_t *irq_ctrl_base = &iobank0_hw->dormant_wake_irq_ctrl;
+    for (uint offset_reg = 0; offset_reg < NUM_BANK0_GPIOS/8 ; offset_reg++) {
+        enabled = (enabled || (irq_ctrl_base->inte[offset_reg] > 0));
+    }
+    return enabled;
+}
+
+
+
 void gpio_set_irq_enabled_with_callback(uint gpio, uint32_t events, bool enabled, gpio_irq_callback_t callback) {
     gpio_set_irq_enabled(gpio, events, enabled);
 

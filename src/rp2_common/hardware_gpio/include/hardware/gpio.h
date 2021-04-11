@@ -283,6 +283,14 @@ void gpio_set_irq_enabled(uint gpio, uint32_t events, bool enabled);
  */
 void gpio_set_irq_enabled_with_callback(uint gpio, uint32_t events, bool enabled, gpio_irq_callback_t callback);
 
+/*! \brief Check if any dormant interrupts are set
+ *  \ingroup hardware_gpio
+ *
+ * Check is necessary as dormant_wake enbaled will lock machine if none set
+ *
+ */
+bool gpio_enabled_dormant_irqs();
+
 /*! \brief Enable dormant wake up interrupt for specified GPIO
  *  \ingroup hardware_gpio
  *

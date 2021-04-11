@@ -11,6 +11,7 @@
 #include "pico/stdio/driver.h"
 #include "pico/binary_info.h"
 #include "hardware/irq.h"
+#include "pico/stdio_usb.h"
 
 static_assert(PICO_STDIO_USB_LOW_PRIORITY_IRQ > RTC_IRQ, ""); // note RTC_IRQ is currently the last one
 static mutex_t stdio_usb_mutex;
